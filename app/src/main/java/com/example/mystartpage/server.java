@@ -126,22 +126,9 @@ public class server extends AppCompatActivity implements CameraBridgeViewBase.Cv
         if (requestCode == 10 && resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
             String path = RealPathUtil.getRealPath(this, uri);
-//            byte[] datum = new byte[0];
             binding.imageview2.setVisibility(View.VISIBLE);
             binding.imageview2.setImageURI(uri);
             File file = new File(path);
-//            try {
-//                FileOutputStream fos = new FileOutputStream(file);
-//                fos.write(datum);
-//                fos.close();
-//                System.out.println("File created successfully!");
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-
-
-//            Uri returnUri = returnIntent.getData();
-//            String mimeType = getContentResolver().getType(returnUri);
 
             if (file.exists()) {
                 Log.d("abacada","abacada");
@@ -167,34 +154,6 @@ public class server extends AppCompatActivity implements CameraBridgeViewBase.Cv
                 Toast.makeText(this, "File does not exist", Toast.LENGTH_SHORT).show();
 
             }
-
-//            long duration = (System.nanoTime() - start_2)/1000000;
-//
-//            String time = Long.toString(duration);
-//
-//            String milli = time + "ms";
-//
-//            TextView exec_view = findViewById(R.id.textView4);
-//
-//            exec_view.setText(milli);
-//
-//            Log.d("Execution Time Server", milli); //for Server upload to image output only
-
-
-//            public static String getMimeType(File file) {
-//                String type = null;
-//                final String url = file.toString();
-//                final String extension = MimeTypeMap.getFileExtensionFromUrl(url);
-//                if (extension != null) {
-//                    type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.toLowerCase());
-//                }
-//                if (type == null) {
-//                    type = "image/*"; // fallback type. You might set it to */*
-//                }
-//                return type;
-//            }
-        }
-    }
 
     private void uploadImage(File file) throws IOException {
         OkHttpClient client = new OkHttpClient();
@@ -242,28 +201,6 @@ public class server extends AppCompatActivity implements CameraBridgeViewBase.Cv
             return classname;
         }
     }
-
-
-//    private void clickListeners() {
-//        binding.uploadButton.setOnClickListener(v->{
-//            Intent intent = new Intent();
-//           intent.setType("image/*");
-//            intent.setAction(Intent.ACTION_GET_CONTENT);
-//            startActivityForResult(intent, 10);
-//        });
-//    }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 10 && resultCode == Activity.RESULT_OK) {
-//            Uri uri = data.getData();
-//            Context context = MainActivity.this;
-//            path = RealPathUtil.getRealPath(context, uri);
-//            binding.imageview.setImageURI(uri);
-//          binding.textView.setText(path);
-//        }
-//    }
 
 
     public static void saveImage(Context context, String fileName, Mat image) {
